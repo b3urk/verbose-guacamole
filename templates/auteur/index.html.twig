@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block titre %}
+    {{parent()}} - Auteur
+{% endblock %}
+
+
+{% block content %}
+    <section>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de Naissance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for auteur in auteurs %}
+                    <tr>
+                        <td>{{auteur.nom}}</td>
+                        <td>{{auteur.prenom}}</td>
+                        <td>{{auteur.dateDeNaissance| date("d M Y")}}</td>
+                        <td><a href="{{path("modif_auteur",{id: auteur.id})}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="{{path("efface_auteur",{id: auteur.id})}}"><i class="fa fa-eraser" aria-hidden="true"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </body>
+            <tfooter>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de Naissance</th>
+                    <th>Actions</th>
+                </tr>
+            </tfooter>
+        </table>
+    </section>
+{% endblock %}

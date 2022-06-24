@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+
+{% block titre %}
+    {{parent()}} - lecture
+{% endblock %}
+
+{% block content %}
+    <h1>{{  article.titre }}</h1>
+    <h4> crée le {{ article.dateDeCreation | date() }}</h4>
+    {% if article.dateDeModification != null %}
+        <h4>modifié le {{ article.dateDeModification | date() }}</h4>
+    {% endif %}
+
+    <p>{{ article.contenu }}</p>
+{% endblock %}

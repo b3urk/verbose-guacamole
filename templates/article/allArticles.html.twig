@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - articles
+{% endblock %}
+
+{% block content %}
+<div style='display: grid;grid-template-columns: repeat(4, 1fr);grid-gap: 10px; margin-top: 10px;}'>
+        {% for article in articles %}
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <div>
+                      <a href="{{path("modif_article",{id: article.id})}}"><i class="fas fa-edit mx-1 text-success"></i></a>
+                  </div>
+                  <div>
+                      <a href="{{path("efface_article",{id: article.id})}}"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                  </div>
+                  <h5 class="card-title">{{ article.titre }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ article.dateDeCreation | date() }}</h6>
+                <p class="card-text">{{ article.contenu | slice(0, 20) }}</p>
+                <a href="{{path("lire_article",{id: article.id})}}" class="card-link">lire article</a>
+              </div>
+            </div>
+        {% endfor %}
+</div>
+{% endblock %}

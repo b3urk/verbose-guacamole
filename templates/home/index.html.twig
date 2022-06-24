@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% block title %}
+    {{ parent() }} - acceuil
+{% endblock %}
+
+{% block content %}
+    <div class="row mt-5 justify-text-center text-center">
+        <h1>dernier article publier:</h1>
+        <div>
+            <h3>titre de l'article : {{ article.titre }}</h3>
+            <h6>date de l'article : {{ article.dateDeCreation | date() }}</h6>
+            <h6>date de modif de l'article</h6>
+            <h6>auteur de l'article</h6>
+            <p>contenu de l'article</p>
+            <p>{{ article.contenu }}</p>
+        </div>
+    </div>
+{% endblock %}
+
+
